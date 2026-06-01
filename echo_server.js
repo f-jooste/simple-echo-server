@@ -10,6 +10,11 @@ function newConn(socket) {
     socket.on('data', (data) => {
     console.log('data', data); // Log the received data
     socket.write(data); // Send the received data back to the client
+
+    if (data.includes('q')) {
+        console.log('Closing');
+        socket.end();
+    }
 });
 }
 
